@@ -22,11 +22,11 @@ class Card
 
 end
 
-
 class Deck
 
   def initialize 
-    @cards = Array.new(52)
+    @cards = Array.new(52){|x| x+=1}
+    @drawn_cards = []
   end
 
   def cards
@@ -34,10 +34,31 @@ class Deck
   end
 
   def draw
-    @cards.pop
+    x = @cards.pop
+    @drawn_cards << x
+    x
   end 
+
+  def drawn
+    @drawn_cards
+  end
 
 end
 
 class Hand
+
+def initialize
+  @value = 0
+end
+
+def add card, card2
+  @value = card.value + card2.value
+  binding.pry
+end
+
+def value
+  @value
+end
+
+
 end
