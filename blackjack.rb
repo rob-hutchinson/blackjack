@@ -27,12 +27,15 @@ class Deck
 
   def initialize 
     @cards = Array.new(52)
-    
   end
 
   def cards
     @cards
   end
+
+  def draw
+    @cards.pop
+  end 
 
 end
 
