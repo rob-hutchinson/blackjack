@@ -1,3 +1,5 @@
+require 'pry'
+
 class Card
 
   def initialize value, suit
@@ -23,7 +25,13 @@ end
 
 class Deck
 
+  def initialize 
+    @cards = Array.new(52)
+    
+  end
+
   def cards
+    @cards
   end
 
 end
