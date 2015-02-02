@@ -48,16 +48,19 @@ end
 class Hand
 
 def initialize
-  @value = 0
+  @hand_value = 0
 end
 
-def add card, card2
-  @value = card.value + card2.value
-  binding.pry
+def add *cards
+  cards.each do |card|
+    @hand_value += card.value
+  end
+  @hand_value
+  bindi
 end
 
 def value
-  @value
+  @hand_value
 end
 
 
