@@ -10,8 +10,9 @@ class Card
   def value
     if @value == :K || @value == :Q || @value == :J
       @value = 10
-    elsif @value == :A
-      @value = 1
+    end
+    if @value == :A
+      @value = 11
     end
     @value
   end
@@ -56,11 +57,22 @@ def add *cards
     @hand_value += card.value
   end
   @hand_value
-  bindi
 end
 
 def value
   @hand_value
+end
+
+def busted?
+  if @hand_value > 21
+    true
+  end
+end
+
+def blackjack?
+  if @hand_value == 21
+    true
+  end
 end
 
 
