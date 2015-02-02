@@ -26,7 +26,17 @@ end
 class Deck
 
   def initialize 
-    @cards = Array.new(52){|x| x+=1}
+    cards = [:A, 2, 3, 4, 5, 6, 7, 8, 9, 10, :J, :Q, :K]
+    suits = [:D, :S, :C, :H]
+    @cards = []
+
+    suits.each do |x|
+      cards.size.times do |y|
+        @cards << Card.new(cards[y], x)
+      end
+    end
+    
+    @cards.shuffle!
     @drawn_cards = []
   end
 
@@ -50,11 +60,18 @@ class Hand
 
 def initialize
   @hand_value = 0
+  @hand_cards = []
 end
 
 def add *cards
   cards.each do |card|
     @hand_value += card.value
+    @hand_cards.push card.value
+    if @hand_value > 21 && @hand_cards.include?(11)
+      @hand_value -= 10
+      @hand_cards.delete(11)
+      @hand_cards << 1
+    end
   end
   @hand_value
 end
@@ -75,5 +92,8 @@ def blackjack?
   end
 end
 
+def to_s 
+  
+end
 
 end
