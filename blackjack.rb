@@ -5,6 +5,7 @@ class Card
   def initialize value, suit
     @value = value
     @suit = suit
+    @rank = value
   end
 
   def value
@@ -19,6 +20,10 @@ class Card
 
   def suit
     @suit
+  end
+
+  def rank
+    @rank
   end
 
 end
@@ -61,10 +66,13 @@ class Hand
 def initialize
   @hand_value = 0
   @hand_cards = []
+  @string_variable = []
+  @string = ""
 end
 
 def add *cards
   cards.each do |card|
+    @string_variable << "#{card.rank}" + "#{card.suit}"
     @hand_value += card.value
     @hand_cards.push card.value
     if @hand_value > 21 && @hand_cards.include?(11)
@@ -93,7 +101,10 @@ def blackjack?
 end
 
 def to_s 
-  
+  @string_variable.length.times do |x|
+    @string += "#{@string_variable[x]}" + ", "  
+  end
+   @string[0..-3]
 end
 
 end

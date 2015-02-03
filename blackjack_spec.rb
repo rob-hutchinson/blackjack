@@ -18,10 +18,10 @@ class TestCard < Minitest::Test
     end
   end
 
-  # def test_ace_value
-  #   card = Card.new(:A, :D)
-  #   assert_equal card.value, 1
-  # end
+  def test_ace_value
+    card = Card.new(:A, :D)
+    assert_equal card.value, 11
+  end
 
 end
 
@@ -98,7 +98,15 @@ class TestHand < Minitest::Test
     assert_equal hand.value, 14
   end
 
-   def test_much_aces_such_blackjack
+  def test_much_aces_such_fail
+    hand = Hand.new
+    hand.add(Card.new(:A, :H), Card.new(5, :D))
+    hand.add(Card.new(6, :S))
+    hand.add(Card.new(:A, :D))
+    assert_equal hand.value, 13
+  end
+
+  def test_much_aces_such_blackjack
     hand = Hand.new
     hand.add(Card.new(:A, :H), Card.new(:A, :D))
     hand.add(Card.new(:A, :S))
