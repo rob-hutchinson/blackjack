@@ -20,13 +20,13 @@ def blackjack_check score
 end
 
 puts "\n\nWelcome to Blackjack!\n\n"
-puts "Player 1, you've drawn #{player1_hand.to_s}. 
+puts "Player 1, you've drawn #{player1_hand.string_variable}. 
 Your current score is #{player1_hand.value}."
 loop do
 puts "Would you like another card?"
   if gets.chomp == "y"
     player1_hand.add(deck.draw)
-    puts "You now have #{player1_hand.to_s},
+    puts "You now have #{player1_hand.string_variable},
 and your current score is #{player1_hand.value}."
     if player1_hand.busted?
       puts "Sorry! You busted!"

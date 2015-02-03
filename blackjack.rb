@@ -70,6 +70,8 @@ def initialize
   @string = ""
 end
 
+attr_reader :string_variable
+
 def add *cards
   cards.each do |card|
     @string_variable << "#{card.rank}" + "#{card.suit}"

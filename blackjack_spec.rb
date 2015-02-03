@@ -114,4 +114,21 @@ class TestHand < Minitest::Test
     assert hand.blackjack?
   end
 
+  def test_aces_for_daaaaays
+    hand = Hand.new
+    hand.add(Card.new(:A, :H), Card.new(8, :H))
+    hand.add(Card.new(8, :C))
+    hand.add(Card.new(8, :S))
+    assert hand.busted?
+  end
+
+  def test_more_ace_testing
+    hand = Hand.new
+    hand.add(Card.new(:A, :H), Card.new(9, :H))
+    hand.add(Card.new(:K, :C))
+    hand.add(Card.new(:A, :S))
+    assert hand.blackjack?
+  end
+
+
 end
